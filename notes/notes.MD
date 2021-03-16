@@ -7,7 +7,7 @@ Variables ont une portée limitée seulement dans le cadre d'une fonction
 
 Hoisting : 
 
-prendre toutes les déclarations de variable et les mets au dessus
+prendre toutes les déclarations de variable et les mets au dessus sauf pour les functions ou il les mets tout au début de la func
 
 ex : console.log(a)
      var a = 3 
