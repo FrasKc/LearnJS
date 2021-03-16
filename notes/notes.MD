@@ -13,3 +13,5 @@ ex : console.log(a)
      var a = 3 
 
      result = undefined
+
+Attention ! Hoisting différent avec les functions 
