@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Pierre Feuille Ciseaux</title>
+        <link rel="stylesheet" href="../sources/style.css">
+        <script src="../sources/main.js"></script>
+    </head>
+
+    <body>
+        <h1>Etes-vous plus fort que l'ordinateur ?</h1>
+
+        <p>Bonjour ! Si vous etes ici c'est que vous souhaitez tester vos compétences en Pierre Feuille Ciseaux face à l'ordinateur ! Alors allez-y !</p>
+
+        <div class="box">
+            <button>Pierre</button>
+          <button>Feuilles</button>
+          <button>Ciseaux</button>
+          </div>
+          
+          <div class="resultat"></div>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+            body{
+               background-image:url('https://abload.de/img/zeichenflche1-8ucont.png') ;
+               overflow-x: hidden;
+               font-family: 'Roboto', sans-serif;
+               text-align: center;
+            }
+
+            h1{
+                text-align: center;
+                font-family: 'DotGothic16', sans-serif;
+                width: auto;
+            }
+            .box {
+                display : flex;
+                align-items : center;
+                justify-content : center;
+                padding : 10px ;
+              }
+
+              button{
+                display:inline-block;
+                padding:0.35em 3em;
+                background-color: #ffffff00;
+                border:0.2em solid #000000;
+                font: bold;
+                margin:0 1em 0.3em 0;
+                border-radius:0.12em;
+                box-sizing: border-box;
+                text-decoration:none;
+                font-family:'Roboto',sans-serif;
+                font-weight:300;
+                color:#000000;
+                text-align:center;
+                transition: all 0.2s;
+            } 
+            button:visited{
+                color: white;
+            }
+            button:hover{
+                color:#ffffff;
+                background-color:rgb(0, 0, 0);
+                border:0.1em solid #ffffff;
+                
+            }
+              button:active {
+                transform : scale(0.90);
+              }
+              .resultat {
+                height : 50px;
+                text-align : center;
+                font-weight: bold;
+                font-size: 20px;
+                padding : 10px;
+              }
+          </style>
+          <script>
+            const buttons = document.querySelectorAll("button")
+            
+            for (let i = 0; i < buttons.length; i++) {
+              buttons[i].addEventListener('click', function() {
+                var joueur = buttons[i].innerHTML
+                var computerChoice = Math.random()
+
+                if (computerChoice < 0.33) {
+                    computerChoice = 'Pierre'
+                } else if (computerChoice <= 0.66) {
+                    computerChoice = 'Feuilles'
+                } else {
+                    computerChoice = 'Ciseaux'
+                }
+                ordi = computerChoice
+                var resultat = "";
+                if (joueur===ordi) {
+                  resultat = "Egalité !</br>" + joueur + " ne peut pas battre "+ ordi
+                }
+                else if ((joueur === "Pierre" && ordi === "Ciseaux") || (joueur === "Ciseaux" && ordi === "Feuilles") || (joueur === "Feuilles") && (ordi === "Pierre")) {
+                  resultat = "Vous avez gagné ! " + "</br>Voici votre choix : " + joueur + " </br>Voici le choix de l'adversaire : " + ordi
+                }
+                else {
+                  resultat = "Vous avez Perdu ! </br>L'ordinateur à joué : " + ordi + " </br>Vous avez joué : " + joueur
+                }
+              document.querySelector(".resultat").innerHTML = `
+              ${resultat}
+            `  ;
+                
+              });
+              
+              
+            }
+          </script>
+    </body>
+
+</html>
