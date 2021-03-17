@@ -21,6 +21,15 @@
           </div>
           
           <div class="resultat"></div>
+
+          <div class="score">
+            <div class="scoreJoueur"></div>
+            <div class="scoreOrdi"></div>
+          </div>
+
+          <div class="scoremancheJ"></div>
+          <div class="scoremancheO"></div>
+
           <style>
             @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -79,10 +88,39 @@
                 font-size: 20px;
                 padding : 10px;
               }
+
+              .score{
+                  margin-top: 50px;
+                  font-size: 20px;
+                  font-weight: bolder
+              }
+
+              .scoremancheJ{
+                  margin-right: 800px;
+                  font-size: 20px;
+                  position: relative; top: 15px;
+                  font-weight: bold;
+              }
+
+              .scoremancheO{
+                  margin-left: 800px;
+                  position: relative; bottom: 10px;
+                  font-size: 20px;
+                  font-weight: bold;
+              }
           </style>
           <script>
             const buttons = document.querySelectorAll("button")
             
+            var scoreJoueur = 0
+            var scoreOrdi = 0
+            var messageVicJ = ""
+            var messageVicO = ""
+            var scoremancheJ = 0
+            var scoremancheO = 0
+            var manchemessageJ = ""
+            var manchemessageO = ""
+
             for (let i = 0; i < buttons.length; i++) {
               buttons[i].addEventListener('click', function() {
                 var joueur = buttons[i].innerHTML
@@ -96,23 +134,71 @@
                     computerChoice = 'Ciseaux'
                 }
                 ordi = computerChoice
-                var resultat = "";
+                var resultat = ""
+              
                 if (joueur===ordi) {
                   resultat = "Egalité !</br>" + joueur + " ne peut pas battre "+ ordi
                 }
                 else if ((joueur === "Pierre" && ordi === "Ciseaux") || (joueur === "Ciseaux" && ordi === "Feuilles") || (joueur === "Feuilles") && (ordi === "Pierre")) {
                   resultat = "Vous avez gagné ! " + "</br>Voici votre choix : " + joueur + " </br>Voici le choix de l'adversaire : " + ordi
+                  scoreJoueur ++
                 }
                 else {
                   resultat = "Vous avez Perdu ! </br>L'ordinateur à joué : " + ordi + " </br>Vous avez joué : " + joueur
+                  scoreOrdi ++
                 }
               document.querySelector(".resultat").innerHTML = `
               ${resultat}
             `  ;
                 
+             document.querySelector(".scoreJoueur").innerHTML = `
+             Vous : ${scoreJoueur}
+             ${messageVicJ}
+            `  ;
+
+             document.querySelector(".scoreOrdi").innerHTML = `
+             Ordinateur : ${scoreOrdi}
+             ${messageVicO}
+            `  ; 
+
+            document.querySelector(".scoremancheJ").innerHTML = `
+            Manche gagnée par vous : ${scoremancheJ}
+            ${manchemessageJ}
+            `  ; 
+
+            document.querySelector(".scoremancheO").innerHTML = `
+            Manche gagnée par l'ordinateur : ${scoremancheO}
+            ${manchemessageO}
+            `  ; 
+
+            if(scoreJoueur === 5){
+                messageVicJ = "</br>Victoire pour vous !"
+                scoremancheJ ++
+                scoreJoueur = 0
+                scoreOrdi = 0
+            } else if (scoreOrdi === 5){
+                messageVicO = "</br>Victoire pour l'ordinateur !"
+                scoremancheO ++
+                scoreJoueur = 0
+                scoreOrdi = 0
+            } else if (scoreJoueur === 0 || scoreOrdi === 0) {
+                messageVicO = ""
+                messageVicJ = ""
+            }
+
+            if(scoremancheJ === 3) {
+                manchemessageJ = "</br>Félicitations vous avez vaincus l'ordinateur !"
+                scoremancheJ = 0
+                scoremancheO = 0
+            } else if (scoremancheO === 3) {
+                manchemessageO = "</br>Dommage ! l'ordinateur vous as vaincus mais vous êtes capable de le faire ! "
+                scoremancheJ = 0
+                scoremancheO = 0
+            } else if (scoremancheJ === 0 || scoremancheO === 0) {
+                manchemessageJ = ""
+                manchemessageO = ""
+            }
               });
-              
-              
             }
           </script>
     </body>
