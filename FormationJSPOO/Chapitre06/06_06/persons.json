@@ -1,0 +1,17 @@
+[
+    {
+        "firstName":"Damien",
+        "lastName":"Bruyndonckx",
+        "country":"Belgium"
+    },
+    {
+        "firstName":"Hans",
+        "lastName":"Surless",
+        "country":"France"
+    },
+    {
+        "firstName":"Walter",
+        "lastName":"Loo",
+        "country":"Belgium"
+    }
+] 
