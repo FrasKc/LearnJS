@@ -6,7 +6,7 @@ let employee1 = createEmployee('Damien', 'Bruyndonckx');
 let employee2 = new Employee('Hans', 'Surless', 'France');
 let firstName = 'Damien';
 
-console.log(employee);
+console.log(firstName.constructor);
 
 
 function createEmployee (firstName, lastName, country='Belgium'){

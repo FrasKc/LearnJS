@@ -12,8 +12,14 @@ function Employee (firstName, lastName, country='Belgium', baseSalary=1500){
     this.sayHello = function(){
         return `${this.firstName} vous dit bonjour !`;
     };
+    this.getSalary = function() {
+        return calculateSalary();
+    };
+    this.getHireDate = function() {
+        return hireDate;
+    }
 }
 
 let employee = new Employee('Hans', 'Surless', 'France');
 
-console.log(employee.calculateSalary());
+console.log(employee.getHireDate());

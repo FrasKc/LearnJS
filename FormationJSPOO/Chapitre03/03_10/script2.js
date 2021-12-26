@@ -13,3 +13,6 @@ let customer = {
     lastName : 'Surless',
     country : 'Belgium'
 }
+
+
+console.log(employee.sayHello.call(customer));
