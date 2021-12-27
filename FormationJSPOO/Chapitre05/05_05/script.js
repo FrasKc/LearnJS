@@ -27,6 +27,9 @@ extend(Customer, Person);
 let employee = new Employee('Damien', 'Bruyndonckx', 'Belgium');
 let customer = new Customer('Hans', 'Surless', 001);
 
+Employee.prototype.sayHello = function(){
+    return `${this.firstName} vous dit bonjour ! Bonne journée`;
+}
 
-console.log(employee);
-console.log(customer);
+console.log(employee.sayHello());
+console.log(customer.sayHello());

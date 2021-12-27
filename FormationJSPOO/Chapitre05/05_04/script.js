@@ -16,10 +16,13 @@ function Customer (firstName, lastName, customerId, country='Belgium'){
     this.customerId = customerId;
 };
 
-Employee.prototype = new Person();
-Employee.prototype.constructor = Employee;
-Customer.prototype = new Person();
-Customer.prototype.constructor = Customer;
+function extend(Child, Parent){
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+extend(Employee, Person);
+extend(Customer, Person);
 let employee = new Employee('Damien', 'Bruyndonckx', 'Belgium');
 let customer = new Customer('Hans', 'Surless', 001);
 

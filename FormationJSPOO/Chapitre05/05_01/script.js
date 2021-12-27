@@ -1,12 +1,18 @@
+function Person() {
+   
+}
+
+Person.prototype.sayHello = function(){
+    return `${this.firstName} vous dit bonjour !`;
+};
+
 function Employee (firstName, lastName, country='Belgium', baseSalary=1500){
     this.firstName = firstName;
     this.lastName = lastName;
     this.country = country;
     this.baseSalary = baseSalary;
 }
-Employee.prototype.sayHello = function(){
-    return `${this.firstName} vous dit bonjour !`;
-};
+
 
 function Customer (firstName, lastName, customerId, country='Belgium'){
     this.firstName = firstName;
@@ -14,14 +20,15 @@ function Customer (firstName, lastName, customerId, country='Belgium'){
     this.country = country;
     this.customerId = customerId;
 };
-Customer.prototype.sayHello = function(){
-    return `${this.firstName} vous dit bonjour !`;
-};
 
+Employee.prototype = new Person();
+Customer.prototype = new Person();
 
+let person = new Person();
 let employee = new Employee('Damien', 'Bruyndonckx', 'Belgium');
 let customer = new Customer('Hans', 'Surless', 001);
 
 
-console.log(employee);
-console.log(customer);
+console.log(person);
+console.log(customer.sayHello());
+console.log(employee.sayHello());

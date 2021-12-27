@@ -1,20 +1,18 @@
-function Person(){
-
+function Person(firstName, lastName, country='Belgium'){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.country = country;
 }
 Person.prototype.sayHello = function(){
     return `${this.firstName} vous dit bonjour !`;
 };
 function Employee (firstName, lastName, country='Belgium', baseSalary=1500){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.country = country;
+    Person.call(this, firstName, lastName, country='Belgium');
     this.baseSalary = baseSalary;
 };
 
 function Customer (firstName, lastName, customerId, country='Belgium'){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.country = country;
+    Person.call(this, firstName, lastName, country='Belgium');
     this.customerId = customerId;
 };
 

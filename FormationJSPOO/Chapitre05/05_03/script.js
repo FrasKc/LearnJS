@@ -17,10 +17,16 @@ function Customer (firstName, lastName, customerId, country='Belgium'){
 };
 
 Employee.prototype = new Person();
+Employee.prototype.constructor = Employee;
 Customer.prototype = new Person();
+Customer.prototype.constructor = Customer;
 let employee = new Employee('Damien', 'Bruyndonckx', 'Belgium');
 let customer = new Customer('Hans', 'Surless', 001);
 
 
 console.log(employee);
 console.log(customer);
+
+let person = new Person();
+
+console.log(person);
