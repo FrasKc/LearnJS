@@ -3,9 +3,13 @@ class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country; 
+        
     }
     sayHello(){
         return `${this.firstName} vous dit bonjour !`;
+    }
+    get fullName(){
+        return `${this.firstName} ${this.lastName}`;
     }
 }
 

@@ -10,11 +10,15 @@ class Person {
 }
 
 class Employee extends Person {
+    #baseSalary;
     constructor(firstName, lastName, baseSalary, country='Belgium'){
         super(firstName, lastName, country);
-        this.baseSalary = baseSalary;
+        this.#baseSalary = baseSalary;
+    }
+    doubleSalary(){
+        return this.#baseSalary * 2;
     }
 }
 
 let employee = new Employee('Damien', 'Bruyndonckx', 1500);
-console.log(employee);
+console.log(employee.doubleSalary());

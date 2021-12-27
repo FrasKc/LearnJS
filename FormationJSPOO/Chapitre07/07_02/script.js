@@ -9,10 +9,11 @@ class Person {
     }
 }
 
+const _baseSalary = Symbol();
 class Employee extends Person {
     constructor(firstName, lastName, baseSalary, country='Belgium'){
         super(firstName, lastName, country='Belgium');
-        this.baseSalary = baseSalary;
+        this[_baseSalary] = baseSalary;
     }
 }
 
