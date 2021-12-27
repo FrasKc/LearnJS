@@ -12,3 +12,7 @@ Employee.prototype.sayHello = function(){
 let employee = new Employee('Damien', 'Bruyndonckx', 'Belgium');
 
 console.log(employee);
+console.log(employee.firstName);
+console.log(employee.sayHello());
+
+console.log(employee.hasOwnProperty(''))

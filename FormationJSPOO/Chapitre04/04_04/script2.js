@@ -8,3 +8,5 @@ function Employee (firstName, lastName, country='Belgium'){
 }
 
 let employee = new Employee('Hans', 'Surless', 'France');
+
+console.log(Object.getPrototypeOf(employee));

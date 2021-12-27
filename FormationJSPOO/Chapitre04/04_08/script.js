@@ -11,4 +11,9 @@ Employee.prototype.sayHello = function(){
 
 let employee = new Employee('Damien', 'Bruyndonckx', 'Belgium');
 
+Employee.prototype.sayGoodbye = function(){
+    return `${this.firstName} vous dit au revoir !`;
+};
+
 console.log(employee.sayHello());
+console.log(employee.sayGoodbye());
