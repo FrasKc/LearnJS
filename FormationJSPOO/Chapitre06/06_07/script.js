@@ -14,6 +14,10 @@ class Employee extends Person {
         super(firstName, lastName, country='Belgium');
         this.baseSalary = baseSalary;
     }
+    sayHello(){
+        let message = super.sayHello();
+        return message + ` ${this.firstName} est un employé.`;
+    }
 }
 
 class Customer extends Person {

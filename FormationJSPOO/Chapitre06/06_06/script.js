@@ -7,9 +7,21 @@ class Person {
     sayHello(){
         return `${this.firstName} vous dit bonjour !`;
     }
+    static getAllFromUrl(url, callback){
+        fetch(url)
+        .then(answer => answer.json())
+        .then(json => {
+            let persons = [];
+            json.map(person => persons.push(new Person(person.firstName, person.lastName, person.country)))
+            callback(persons);
+        });
+    }
 }
 
 let person = new Person('Damien', 'Bruyndonckx');
-console.log(person);
+
+Person.getAllFromUrl('persons.json', function(persons){
+    persons.map(person => console.log(person.sayHello()))
+});
 
 
